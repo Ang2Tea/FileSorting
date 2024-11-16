@@ -3,7 +3,7 @@ using FileSorting.Core.Configs;
 using FileSortingConsole;
 using FileSortingConsole.Parser;
 
-ConfigParser<StandartConfig> configParser = new();
+ConfigParser<StandartConfig> configParser = new(Environment.GetCommandLineArgs()[1]);
 ConsoleLogger logger = new();
 FilesSorting sorting = new(configParser.Parse(), logger);
 
