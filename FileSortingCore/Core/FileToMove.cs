@@ -23,7 +23,8 @@ namespace FileSorting.Core
             this.config = config;
             log = logger;
             fileNameOnly = this.file.Name.Split(".")[0];
-            CurrentPath = config.SortingPath + "\\" + file.Extension[1..].ToUpper();
+            var fileExtension = !string.IsNullOrWhiteSpace(file.Extension) && file.Extension.Length >= 2 ? file.Extension[1..] : "undefined";
+            CurrentPath = Path.Combine(config.SortingPath, fileExtension.ToUpper());
         }
 
         private bool MovedFile(string filePath)
